@@ -237,35 +237,35 @@ class Context {
     constructor() {
         var _a, _b, _c;
         this.payload = {};
-        if (process.env.GITHUB_EVENT_PATH) {
-            if (fs_1.existsSync(process.env.GITHUB_EVENT_PATH)) {
-                this.payload = JSON.parse(fs_1.readFileSync(process.env.GITHUB_EVENT_PATH, { encoding: 'utf8' }));
+        if (process***REMOVED***.GITHUB_EVENT_PATH) {
+            if (fs_1.existsSync(process***REMOVED***.GITHUB_EVENT_PATH)) {
+                this.payload = JSON.parse(fs_1.readFileSync(process***REMOVED***.GITHUB_EVENT_PATH, { encoding: 'utf8' }));
             }
             else {
-                const path = process.env.GITHUB_EVENT_PATH;
+                const path = process***REMOVED***.GITHUB_EVENT_PATH;
                 process.stdout.write(`GITHUB_EVENT_PATH ${path} does not exist${os_1.EOL}`);
             }
         }
-        this.eventName = process.env.GITHUB_EVENT_NAME;
-        this.sha = process.env.GITHUB_SHA;
-        this.ref = process.env.GITHUB_REF;
-        this.workflow = process.env.GITHUB_WORKFLOW;
-        this.action = process.env.GITHUB_ACTION;
-        this.actor = process.env.GITHUB_ACTOR;
-        this.job = process.env.GITHUB_JOB;
-        this.runNumber = parseInt(process.env.GITHUB_RUN_NUMBER, 10);
-        this.runId = parseInt(process.env.GITHUB_RUN_ID, 10);
-        this.apiUrl = (_a = process.env.GITHUB_API_URL) !== null && _a !== void 0 ? _a : `https://api.github.com`;
-        this.serverUrl = (_b = process.env.GITHUB_SERVER_URL) !== null && _b !== void 0 ? _b : `https://github.com`;
-        this.graphqlUrl = (_c = process.env.GITHUB_GRAPHQL_URL) !== null && _c !== void 0 ? _c : `https://api.github.com/graphql`;
+        this.eventName = process***REMOVED***.GITHUB_EVENT_NAME;
+        this.sha = process***REMOVED***.GITHUB_SHA;
+        this.ref = process***REMOVED***.GITHUB_REF;
+        this.workflow = process***REMOVED***.GITHUB_WORKFLOW;
+        this.action = process***REMOVED***.GITHUB_ACTION;
+        this.actor = process***REMOVED***.GITHUB_ACTOR;
+        this.job = process***REMOVED***.GITHUB_JOB;
+        this.runNumber = parseInt(process***REMOVED***.GITHUB_RUN_NUMBER, 10);
+        this.runId = parseInt(process***REMOVED***.GITHUB_RUN_ID, 10);
+        this.apiUrl = (_a = process***REMOVED***.GITHUB_API_URL) !== null && _a !== void 0 ? _a : `https://api.github.com`;
+        this.serverUrl = (_b = process***REMOVED***.GITHUB_SERVER_URL) !== null && _b !== void 0 ? _b : `https://github.com`;
+        this.graphqlUrl = (_c = process***REMOVED***.GITHUB_GRAPHQL_URL) !== null && _c !== void 0 ? _c : `https://api.github.com/graphql`;
     }
     get issue() {
         const payload = this.payload;
         return Object.assign(Object.assign({}, this.repo), { number: (payload.issue || payload.pull_request || payload).number });
     }
     get repo() {
-        if (process.env.GITHUB_REPOSITORY) {
-            const [owner, repo] = process.env.GITHUB_REPOSITORY.split('/');
+        if (process***REMOVED***.GITHUB_REPOSITORY) {
+            const [owner, repo] = process***REMOVED***.GITHUB_REPOSITORY.split('/');
             return { owner, repo };
         }
         if (this.payload.repository) {
@@ -476,7 +476,7 @@ module.exports = async () => {
         recursive: 1,
       });
 
-      if (tree.data.tree.some((t) => t.path === ".env")) badSHAs.push(sha);
+      if (tree.data.tree.some((t) => t.path === "***REMOVED***")) badSHAs.push(sha);
     }
 
     if (badSHAs.length === 0) {
@@ -505,8 +505,8 @@ module.exports = async () => {
             level: "warning",
             msg: `incorrect solution`,
             error: {
-              expected: "All references to the .env file to be removed",
-              got: `.env is still referenced in these commits: ${badSHAs}`,
+              expected: "All references to the ***REMOVED*** file to be removed",
+              got: `***REMOVED*** is still referenced in these commits: ${badSHAs}`,
             },
           },
         ],
@@ -577,7 +577,7 @@ function getProxyAgent(destinationUrl) {
 }
 exports.getProxyAgent = getProxyAgent;
 function getApiBaseUrl() {
-    return process.env['GITHUB_API_URL'] || 'https://api.github.com';
+    return process***REMOVED***['GITHUB_API_URL'] || 'https://api.github.com';
 }
 exports.getApiBaseUrl = getApiBaseUrl;
 //# sourceMappingURL=utils.js.map
@@ -2295,7 +2295,7 @@ function mergeOptions(target) {
 
 
 var debug;
-if (process.env.NODE_DEBUG && /\btunnel\b/.test(process.env.NODE_DEBUG)) {
+if (process***REMOVED***.NODE_DEBUG && /\btunnel\b/.test(process***REMOVED***.NODE_DEBUG)) {
   debug = function() {
     var args = Array.prototype.slice.call(arguments);
     if (typeof args[0] === 'string') {
@@ -2385,8 +2385,8 @@ var ExitCode;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function exportVariable(name, val) {
     const convertedVal = utils_1.toCommandValue(val);
-    process.env[name] = convertedVal;
-    const filePath = process.env['GITHUB_ENV'] || '';
+    process***REMOVED***[name] = convertedVal;
+    const filePath = process***REMOVED***['GITHUB_ENV'] || '';
     if (filePath) {
         const delimiter = '_GitHubActionsFileCommandDelimeter_';
         const commandValue = `${name}<<${delimiter}${os.EOL}${convertedVal}${os.EOL}${delimiter}`;
@@ -2410,14 +2410,14 @@ exports.setSecret = setSecret;
  * @param inputPath
  */
 function addPath(inputPath) {
-    const filePath = process.env['GITHUB_PATH'] || '';
+    const filePath = process***REMOVED***['GITHUB_PATH'] || '';
     if (filePath) {
         file_command_1.issueCommand('PATH', inputPath);
     }
     else {
         command_1.issueCommand('add-path', {}, inputPath);
     }
-    process.env['PATH'] = `${inputPath}${path.delimiter}${process.env['PATH']}`;
+    process***REMOVED***['PATH'] = `${inputPath}${path.delimiter}${process***REMOVED***['PATH']}`;
 }
 exports.addPath = addPath;
 /**
@@ -2430,7 +2430,7 @@ exports.addPath = addPath;
  * @returns   string
  */
 function getInput(name, options) {
-    const val = process.env[`INPUT_${name.replace(/ /g, '_').toUpperCase()}`] || '';
+    const val = process***REMOVED***[`INPUT_${name.replace(/ /g, '_').toUpperCase()}`] || '';
     if (options && options.required && !val) {
         throw new Error(`Input required and not supplied: ${name}`);
     }
@@ -2518,7 +2518,7 @@ exports.setFailed = setFailed;
  * Gets whether Actions Step Debug is on or not
  */
 function isDebug() {
-    return process.env['RUNNER_DEBUG'] === '1';
+    return process***REMOVED***['RUNNER_DEBUG'] === '1';
 }
 exports.isDebug = isDebug;
 /**
@@ -2614,7 +2614,7 @@ exports.saveState = saveState;
  * @returns   string
  */
 function getState(name) {
-    return process.env[`STATE_${name}`] || '';
+    return process***REMOVED***[`STATE_${name}`] || '';
 }
 exports.getState = getState;
 //# sourceMappingURL=core.js.map
@@ -5371,10 +5371,10 @@ function getProxyUrl(reqUrl) {
     }
     let proxyVar;
     if (usingSsl) {
-        proxyVar = process.env['https_proxy'] || process.env['HTTPS_PROXY'];
+        proxyVar = process***REMOVED***['https_proxy'] || process***REMOVED***['HTTPS_PROXY'];
     }
     else {
-        proxyVar = process.env['http_proxy'] || process.env['HTTP_PROXY'];
+        proxyVar = process***REMOVED***['http_proxy'] || process***REMOVED***['HTTP_PROXY'];
     }
     if (proxyVar) {
         proxyUrl = new URL(proxyVar);
@@ -5386,7 +5386,7 @@ function checkBypass(reqUrl) {
     if (!reqUrl.hostname) {
         return false;
     }
-    let noProxy = process.env['no_proxy'] || process.env['NO_PROXY'] || '';
+    let noProxy = process***REMOVED***['no_proxy'] || process***REMOVED***['NO_PROXY'] || '';
     if (!noProxy) {
         return false;
     }
@@ -5455,7 +5455,7 @@ const fs = __importStar(__webpack_require__(747));
 const os = __importStar(__webpack_require__(87));
 const utils_1 = __webpack_require__(634);
 function issueCommand(command, message) {
-    const filePath = process.env[`GITHUB_${command}`];
+    const filePath = process***REMOVED***[`GITHUB_${command}`];
     if (!filePath) {
         throw new Error(`Unable to find environment variable for file command ${command}`);
     }

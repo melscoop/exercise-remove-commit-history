@@ -19,7 +19,7 @@ module.exports = async () => {
         recursive: 1,
       });
 
-      if (tree.data.tree.some((t) => t.path === ".env")) badSHAs.push(sha);
+      if (tree.data.tree.some((t) => t.path === "***REMOVED***")) badSHAs.push(sha);
     }
 
     if (badSHAs.length === 0) {
@@ -48,8 +48,8 @@ module.exports = async () => {
             level: "warning",
             msg: `incorrect solution`,
             error: {
-              expected: "All references to the .env file to be removed",
-              got: `.env is still referenced in these commits: ${badSHAs}`,
+              expected: "All references to the ***REMOVED*** file to be removed",
+              got: `***REMOVED*** is still referenced in these commits: ${badSHAs}`,
             },
           },
         ],
